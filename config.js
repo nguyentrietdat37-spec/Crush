@@ -1,20 +1,29 @@
-const CONFIG = {
-    titleWeb: "Gửi crush của tớ",
-    introTitle: 'Crush yêu dấu',
-    introDesc: `Trái đất vốn lạ thường
-    Mà sao em cứ đi nhầm đường
-    Lạc vào tim anh lẻ loi
-    Đằng sau chữ yêu đây là thương`,
-    btnIntro: '^^HiHi^^',
-    title: 'Phải chăng em đã yêu ngay từ cái nhìn đầu tiên 🥰',
-    desc: 'Thoát web là chấp nhận yêu tớ rồi nhé!!!',
-    btnYes: 'Thích lắm <33',
-    btnNo: 'Không nha :3',
-    question: 'Trên thế giới hơn 7 tỉ người mà sao bạn lại yêu mình <3',
-    btnReply: 'Gửi cho bạn <3',
-    reply: 'Yêu thì yêu mà không yêu thì yêu <33333333',
-    mess: 'Mình biết mà 🥰. Yêu bạn nhiều nhiều 😘😘',
-    messDesc: 'Tối nay, mình qua đón đi chơi nha.',
-    btnAccept: 'Okiiiii lun <3',
-    messLink: 'https://facebook.com/dinhkaito' //link mess của các bạn. VD: /dinhkaito
-}
+const questionContainer = document.querySelector(".question-container");
+const resultContainer = document.querySelector(".result-container.yes");
+const gifResult = document.querySelector(".gif-result");
+const heartLoader = document.querySelector(".cssload-main");
+const yesBtn = document.querySelector(".js-yes-btn");
+const noBtn = document.querySelector(".js-no-btn");
+
+// /change the postion of no button
+noBtn.addEventListener("mouseover", () => {
+  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
+});
+
+// yes button functionality
+
+yesBtn.addEventListener("click", () => {
+  questionContainer.style.display = "none";
+  heartLoader.style.display = "inherit";
+
+  const timeoutId = setTimeout(() => {
+    heartLoader.style.display = "none";
+    resultContainer.style.display = "inherit";
+    gifResult.play();
+  }, 3000);
+});
+    
